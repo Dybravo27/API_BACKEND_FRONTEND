@@ -17,6 +17,8 @@ app.use("/generos", generoRoutes);
 
 app.use("/lenguajes", lenguajeRoutes);
 
+app.use("/usuarios", lenguajeRoutes);
+
 app.listen(3000, () => {
   console.log(">> ESTADO DEL SISTEMA: SERVIDOR EN LINEA");
 });
