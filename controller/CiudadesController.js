@@ -49,8 +49,6 @@ class CiudadesController {
       const ciudades = await OBJCiudades.delete(id_ciudad);
       res.status(201).json(ciudades);
     } catch (error) {
-      console.log(error);
-      
       res.status(500).json({ error: error.message });
     }
   }

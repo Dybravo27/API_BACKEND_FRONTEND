@@ -60,15 +60,15 @@ class Ciudades{
   }
   
   async relacionadaConUsuarios(id_ciudad) {
-    const [usuarios] = await connection.query("SELECT * FROM ciudades WHERE id_ciudad = ?",[id_ciudad]);
+    const [usuarios] = await connection.query("SELECT * FROM usuarios WHERE id_ciudad = ?",[id_ciudad]);
     return usuarios.length > 0;    
   }
   
   async delete(id_ciudad) {
 
-    const categoriaRelacionado = await this.relacionadaConUsuarios(id_ciudad);
+    const ciudadRelacionado = await this.relacionadaConUsuarios(id_ciudad);
 
-    if (categoriaRelacionado) {
+    if (ciudadRelacionado) {
       return{
         error: true,
         mensaje: "No se puede eliminar la Ciudad por que se encuentra asociada a uno o mas Usuarios"
