@@ -1,16 +1,28 @@
 import connection from "../utils/db.js";
 
 class Ciudades{
-  /**
-   * Metodo para obtener los registros de la base de datos
-   * @returns  {Array} listado de las ciudades en un arreglo
-   */
+
+  // Método para obtener todas las categorías
   async getAll() {
     try {
       const [rows] = await connection.query("SELECT * FROM ciudades");
-      return rows;
+      return rows; // Retorna las ciudades obtenidas
     } catch (error) {
-      throw new Error("ERROR: al obtener Ciudades");
+      throw new Error("ERROR: AL OBTENER CIUDADES");
+    }
+  }
+
+  async getById(id) {
+    try {
+      const [rows] = await connection.query("SELECT * FROM ciudades WHERE id_ciudad = ?",[id]);
+      if (rows.length === 0) {
+        // Retorna un array vacío si no se encuentra la ciudad
+        return [];
+      }
+      // Retorna la ciudad encontrada
+      return rows[0];
+    } catch (error) {
+      throw new Error("ERROR AL OBTENER LA CIUDAD");
     }
   }
 
@@ -88,6 +100,14 @@ class Ciudades{
       error: false,
       mensaje: "Ciudad eliminada de manera Exitosa"
     }
+  }
+  // Método para listar los productos de una categoría
+  async ciudades(id_ciudad) {
+    const [rows] = await connection.query(
+      "SELECT * FROM ciudades WHERE id_ciudad = ?",
+      [id_ciudad]
+    );
+    return rows;
   }
 }
 

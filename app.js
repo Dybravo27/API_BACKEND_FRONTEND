@@ -1,10 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-import ciudadeRoutes from "./routes/ciudadesRoutes.js";
-import generoRoutes from "./routes/generosRoutes.js";
-import lenguajeRoutes from "./routes/lenguajesRoutes.js";
-import usuarioRoutes from "./routes/usuariosRoutes.js";
+import ciudadeRoutes from "./src/routes/ciudadesRoutes.js";
+import generoRoutes from "./src/routes/generosRoutes.js";
+import lenguajeRoutes from "./src/routes/lenguajesRoutes.js";
+import usuarioRoutes from "./src/routes/usuariosRoutes.js";
 
 const app = express();
 
