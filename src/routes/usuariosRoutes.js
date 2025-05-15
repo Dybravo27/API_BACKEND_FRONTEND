@@ -14,10 +14,12 @@ router.get('/:id', UsuarioController.getUsuarioById);
 // Crear un nuevo usuario
 router.post('/', camposUsuario, UsuarioController.createUsuario);
 
-router.put('/:id_usuario', UsuarioController.updateUsuarios);
+// Actualizar un usuario
+router.put('/:id', UsuarioController.updateUsuario);
 
-router.patch('/:id_usuario', UsuarioController.updateParcialUsuarios);
+// Actualizar parcialmente un usuario
+router.patch('/:id', parcialesUsuario, UsuarioController.updateUsuario);
 
-router.delete('/:id_usuario', UsuarioController.deleteUsuarios);
+router.delete('/:id', UsuarioController.deleteUsuario);
 
 export default router;

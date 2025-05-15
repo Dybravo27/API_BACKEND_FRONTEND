@@ -37,24 +37,24 @@ export function parcialesCiudad(req, res, next){
                 // Si el campo es requerido y está vacío, continuamos al siguiente campo, evitando el resto de validaciones
                 continue;
             }
-        }
-        // Validar el tamaño mínimo y máximo del campo
-        if (minLength && valor.length < minLength) {
-            errors.push({
-                campo: name,
-                message: `EL CAMPO ${name} DEBE TENER AL MENOS ${minLength} CARACTERES.`,
-            });
-            // Si el campo no cumple con el tamaño mínimo, continuamos al siguiente campo, evitando el resto de validaciones
-            continue;
-        }
-        // Validar el tamaño máximo del campo
-        if (maxLength && valor.length > maxLength) {
-            errors.push({
-                campo: name,
-                message: `EL CAMPO ${name} NO PUEDE TENER MÁS DE ${minLength} CARACTERES.`,
-            });
-            // Si el campo no cumple con el tamaño mínimo, continuamos al siguiente campo, evitando el resto de validaciones
-            continue;
+            // Validar el tamaño mínimo y máximo del campo
+            if (minLength && valor.length < minLength) {
+                errors.push({
+                    campo: name,
+                    message: `EL CAMPO ${name} DEBE TENER AL MENOS ${minLength} CARACTERES.`,
+                });
+                // Si el campo no cumple con el tamaño mínimo, continuamos al siguiente campo, evitando el resto de validaciones
+                continue;
+            }
+            // Validar el tamaño máximo del campo
+            if (maxLength && valor.length > maxLength) {
+                errors.push({
+                    campo: name,
+                    message: `EL CAMPO ${name} NO PUEDE TENER MÁS DE ${minLength} CARACTERES.`,
+                });
+                // Si el campo no cumple con el tamaño mínimo, continuamos al siguiente campo, evitando el resto de validaciones
+                continue;
+            }
         }
     }
     // Si hay errores, devolver una respuesta con los errores

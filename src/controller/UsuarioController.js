@@ -1,3 +1,4 @@
+import Usuario from "../models/Usuario.js";
 import { ResponseProvider } from "../providers/ResponseProviders.js";
 import UserService from "../services/UserService.js";
 class UsuarioController {
@@ -96,39 +97,66 @@ class UsuarioController {
       );
     }
   };
-  
-  static updateUsuarios = async (req, res) => {
-    const { id_usuario } = req.params;
-    const { nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero } = req.body;
-    try {
-      const OBJUsuarios = new Usuarios();
-      const usuarios = await OBJUsuarios.update(nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero,id_usuario);
-      res.status(201).json(usuarios);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  }
-
-  static updateParcialUsuarios = async (req, res) => {
-    const { id_usuario } = req.params;
+  // Actualizar un producto
+  static updateUsuario = async (req, res) => {
+    const { id } = req.params;
     const campos = req.body;
     try {
-      const OBJUsuarios = new Usuarios();
-      const usuarios = await OBJUsuarios.updateParcial(campos,id_usuario);
-      res.status(201).json(usuarios);
+      // Llamamos al método actualizar del modelo
+      const usuario = await UserService.updateUser(id, campos);
+      // Validamos si no se pudo actualizar el usuario
+      if (usuario === null) {
+        return ResponseProvider.error(
+          res,
+          "ERROR AL ACTUALIZAR EL USUARIO",
+          400
+        );
+      }
+      // Retornamos el usuario actualizado
+      return ResponseProvider.sucess(
+        res,
+        usuario,
+        "USUARIO ACTUALIZADO CORRECTAMENTE",
+        200
+      );
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      // Llamamos el provider para centralizar los mensajes de respuesta
+      return ResponseProvider.error(
+        res,
+        "ERROR INTERNO AL ACTUALIZAR EL USUARIO",
+        500
+      );
     }
-  }
-
-  static deleteUsuarios = async (req, res) => {
+  };
+  // Eliminar un usuario
+  static deleteUsuario = async (req, res) => {
+    const { id } = req.params;
     try {
-      const { id_usuario } = req.params;
-      const OBJUsuarios = new Usuarios();
-      const usuarios = await OBJUsuarios.delete(id_usuario);
-      res.status(201).json(usuarios);
+      // Llamamos al servicio para eliminar el producto por su ID
+      const response = await UserService.deleteUser(id);
+      // Validamos si no se pudo eliminar el producto
+      if (response.error) {
+        // Llamamos el provider para centralizar los mensajes de respuesta
+        return ResponseProvider.error(
+          res,
+          response.message,
+          response.code
+        );
+      }
+      // Retornamos el producto eliminado
+      return ResponseProvider.sucess(
+        res,
+        response.data,
+        response.message,
+        response.code
+      );
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      // Llamamos el provider para centralizar los mensajes de respuesta
+      return ResponseProvider.error(
+        res,
+        "ERROR INTERNO AL ELIMINAR EL USUARIO",
+        500
+      );
     }
   }
 }

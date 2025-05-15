@@ -59,80 +59,57 @@ class Usuario{
       throw new Error("ERROR: AL CREAR EL USUARIO");
     }
   }
-
-  async update(nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero,id_usuario) {
+  /**
+   * Método para actualizar un usuario
+   *
+   * @param {Number} id Identificador del usuario
+   * @returns {Object} Objeto usuario actualizado
+   */
+  async update(id, campos) {
     try {
-      const [result] = await connection.query("UPDATE usuarios SET nombre = ?, apellido = ?, telefono = ?, documento = ?, usuario = ?, contrasena = ?,id_ciudad = ?, id_genero = ? WHERE id_usuario = ?", 
-        [nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero,id_usuario]);
+      let query = "UPDATE usuarios SET ";
+      let params = [];
+      // Construimos dinámicamente la consulta de actualización solo con los campos proporcionados
+      for (const [key, value] of Object.entries(campos)) {
+        query += `${key} = ?, `;
+        params.push(value);
+      }
+      // Eliminamos la última coma y espacio de la consulta
+      query = query.slice(0, -2);
+      // Añadimos la condición WHERE para seleccionar el usuario por su ID
+      query += " WHERE id_usuario = ?";
+      params.push(id);
+      const [result] = await connection.query(query, params);
+      return result.affectedRows > 0 ? { id, ...campos } : null;
+    } catch (error) {
+      throw new Error("ERROR: AL ACTUALIZAR EL USUARIO");
+    }
+  }
+  /**
+   * Método para eliminar un prodcuto
+   * @param {Number} id identificador del producto
+   * @returns {String} Mensaje de respuesta
+   */
+  async delete(id) {
+    try {
+      // Procedemos con la eliminación si no está relacionada
+      const [result] = await connection.query("DELETE FROM usuarios WHERE id_usuario = ?",[id]);
+      
       if (result.affectedRows === 0) {
-        throw new Error("Usuario no encontrado");
+        return {
+          error: true,
+          mensaje: "USUARIO NO ENCONTRADO.",
+        };
       }
-      return { 
-        id_usuario,
-        nombre, 
-        apellido, 
-        telefono, 
-        documento, 
-        usuario, 
-        contrasena, 
-        id_ciudad, 
-        id_genero  
-      }
+      return {
+        error: false,
+        mensaje: "USUARIO ELIMINADO EXITOSAMENTE.",
+      };
     } catch (error) {
-      throw new Error("ERROR: Al Actualizar el Usuario");
-    }
-  }
-
-  async updateParcial(campos, id_usuario) {
-    try {
-      let sql = "UPDATE usuarios SET ";
-      for (let cont = 0; cont < Object.keys(campos).length; cont++) {
-        let value = Object.keys(campos)[cont];
-        sql += `${value} = '${campos[value]}'`;
-        if (cont == Object.keys(campos).length - 1) {
-          sql += "";
-        }
-        else {
-          sql += ",";
-        }
-      }
-      sql += ` WHERE id_usuario = ${id_usuario}`;
-      const [result] = await connection.query(sql);
-      if (result.affectedRows === 0) { throw new Error("Usuario no encontrado"); }
-      return { mensaje: "Usuario Actualizado" }
-    } catch (error) {
-      throw new Error("ERROR: Al Actualizar el Usuario Parcialmente");
-    }
-  }
-  
-  async relacionadaConUsuarios(id_usuario) {
-    const [usuarios] = await connection.query("SELECT * FROM lenguaje_usuario WHERE id_usuario = ?",[id_usuario]);
-    return usuarios.length > 0;
-  }
-  
-  async delete(id_usuario) {
-
-    const usuariosRelacionado = await this.relacionadaConUsuarios(id_usuario);
-
-    if (usuariosRelacionado) {
-      return{
+      res.status(500).json({
         error: true,
-        mensaje: "No se puede eliminar el Usuario por que se encuentra asociado a uno o mas Lenguajes"
-      };
-    }
-
-    const [result] = await connection.query("DELETE FROM usuarios WHERE id_usuario = ?",[id_lenguaje]);
-
-    if (result.affectedRows === 0) {
-      return{
-        error : true,
-        mensaje: "Usuario no encontrado"
-      };
-    }
-    
-    return{
-      error: false,
-      mensaje: "Usuario eliminado de manera Exitosa"
+        mensaje: "ERROR AL ELIMINAR EL USUARIO.",
+      });
     }
   }
 }
