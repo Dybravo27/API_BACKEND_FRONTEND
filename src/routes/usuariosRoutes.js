@@ -1,16 +1,23 @@
 import express from "express";
-import UsuariosController from "../controller/UsuariosController.js";
+import UsuarioController from "../controller/UsuarioController.js";
+import { camposUsuario, parcialesUsuario } from "../middlewares/usuarios/index.js";
 
+// Creamos una instancia del controlador
 const router = express.Router();
 
-router.get('/', UsuariosController.getAllUsuarios);
+// Obtener todos los usuarios
+router.get('/', UsuarioController.getAllUsuarios);
 
-router.post('/', UsuariosController.createUsuarios);
+// Obtener un usuario por ID
+router.get('/:id', UsuarioController.getUsuarioById);
 
-router.put('/:id_usuario', UsuariosController.updateUsuarios);
+// Crear un nuevo usuario
+router.post('/', camposUsuario, UsuarioController.createUsuario);
 
-router.patch('/:id_usuario', UsuariosController.updateParcialUsuarios);
+router.put('/:id_usuario', UsuarioController.updateUsuarios);
 
-router.delete('/:id_usuario', UsuariosController.deleteUsuarios);
+router.patch('/:id_usuario', UsuarioController.updateParcialUsuarios);
+
+router.delete('/:id_usuario', UsuarioController.deleteUsuarios);
 
 export default router;

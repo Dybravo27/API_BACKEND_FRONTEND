@@ -1,7 +1,7 @@
 import connection from "../utils/db.js";
 
 class Genero{
-  // Método para obtener todas las categorías
+  // Método para obtener todas los generos
   async getAll() {
     try {
       const [rows] = await connection.query("SELECT * FROM generos");
@@ -11,7 +11,7 @@ class Genero{
     }
   }
 
-  // Método para obtener una ciudad por su id
+  // Método para obtener el genero por su id
   async getById(id) {
     try {
       const [rows] = await connection.query("SELECT * FROM generos WHERE id_genero = ?",[id]);
@@ -38,7 +38,7 @@ class Genero{
       throw new Error("ERROR: AL CREAR EL GENERO");
     }
   }
-  // Método para actualizar una ciudad
+  // Método para actualizar un genero
   async update(id, campos) {
     try {
       let query = "UPDATE generos SET ";

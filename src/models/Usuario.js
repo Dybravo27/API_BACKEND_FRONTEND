@@ -1,35 +1,62 @@
 import connection from "../utils/db.js";
 
-class Usuarios{
+class Usuario{
   /**
-   * Metodo para obtener los registros de la base de datos
-   * @returns  {Array} listado de los usuarios en un arreglo
+   * Método para obtener los usuarios almacenados en la base de datos
+   *
+   * @returns {QueryResult} Areglo de usuarios obtenidos de la base de datos
    */
   async getAll() {
     try {
       const [rows] = await connection.query("SELECT * FROM usuarios");
+      // Retorna los usuarios obtenidos
       return rows;
     } catch (error) {
-      throw new Error("ERROR: Al obtener los Usuarios");
+      throw new Error("ERROR: AL OBTENER LOS USUARIOS");
     }
   }
-
+  /**
+   * Método para obtener un usuario por su id
+   *
+   * @param {Number} id Identificador del usuario
+   * @returns {Object} Objeto usuario
+   */
+  async getById(id) {
+    try {
+      const [rows] = await connection.query("SELECT * FROM usuarios WHERE id_usuario = ?",[id]);
+      if (rows.length === 0) {
+        // Retorna un array vacío si no se encuentra el usuario
+        return [];
+      }
+      // Retorna el usuaro encontrado
+      return rows[0];
+    } catch (error) {
+      throw new Error("ERROR: AL OBTENER EL USUARIO");
+    }
+  }
+  /**
+   * Método para crear un nuevo usuario
+   *
+   * @returns {Object} Objeto usuario
+   */
   async create(nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero) {
     try {
       const [result] = await connection.query("INSERT INTO usuarios (nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-        [nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero]);
-      return { id_usuario: result.id_usuario,
-        nombre, 
-        apellido, 
-        telefono, 
-        documento, 
-        usuario, 
-        contrasena, 
-        id_ciudad, 
-        id_genero 
+        [nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero]
+      );
+      return {
+        id_usuario: result.id_usuario,
+        nombre: nombre, 
+        apellido: apellido, 
+        telefono: telefono, 
+        documento: documento, 
+        usuario: usuario, 
+        contrasena: contrasena, 
+        id_ciudad: id_ciudad, 
+        id_genero: id_genero, 
       }
     } catch (error) {
-      throw new Error("ERROR: Al crear el Usuario");
+      throw new Error("ERROR: AL CREAR EL USUARIO");
     }
   }
 
@@ -110,4 +137,4 @@ class Usuarios{
   }
 }
 
-export default Usuarios;
+export default Usuario;
