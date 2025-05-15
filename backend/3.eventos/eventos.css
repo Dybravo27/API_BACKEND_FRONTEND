@@ -120,6 +120,7 @@ ul.list>li.item a:visited {
 
 form {
   padding: var(--padding);
+  /* border-radius: 50px; */
 }
 
 input,select {
