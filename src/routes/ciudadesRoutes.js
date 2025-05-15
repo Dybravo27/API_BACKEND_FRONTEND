@@ -1,5 +1,6 @@
 import express from "express";
 import CiudadesController from "../controller/CiudadesController.js";
+import { camposCiudad, parcialesCiudades } from "../middlewares/ciudades/index.js";
 
 // Creamos una instancia del controlador
 const router = express.Router();
@@ -10,13 +11,17 @@ router.get('/', CiudadesController.getAllCiudades);
 // Obtener una ciudad por ID
 router.get('/:id', CiudadesController.getCiudadById);
 
-router.post('/', CiudadesController.createCiudades);
+// Crear una nueva ciudad
+router.post('/', camposCiudad, CiudadesController.createCiudad);
 
-router.put('/:id_ciudad', CiudadesController.updateCiudades);
+// Actualizar una ciudad
+router.put('/:id', camposCiudad, CiudadesController.updateCiudad);
 
-router.patch('/:id_ciudad', CiudadesController.updateParcialCiudades);
+// Actualizar parcialmente una ciudad
+router.patch('/:id', parcialesCiudades, CiudadesController.updateCiudad);
 
-router.delete('/:id_ciudad', CiudadesController.deleteCiudades);
+// Eliminar una ciudad
+router.delete('/:id', CiudadesController.deleteCiudad);
 
 
 export default router;

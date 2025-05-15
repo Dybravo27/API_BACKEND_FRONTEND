@@ -25,86 +25,63 @@ class Ciudades{
       throw new Error("ERROR AL OBTENER LA CIUDAD");
     }
   }
-
+  // Método para crear una nueva ciudad
   async create(nombre_ciudad) {
     try {
       const [result] = await connection.query("INSERT INTO ciudades (nombre_ciudad) VALUES (?)",
-        [nombre_ciudad]);
+        [nombre_ciudad]
+      );
+      if (result.affectedRows === 0) {
+        return null; // Retorna null si no se pudo crear la ciudad
+      }
       return { id_ciudad: result.id_ciudad, nombre_ciudad }
     } catch (error) {
-      throw new Error("ERROR: Al crear la Ciudad");
+      throw new Error("ERROR: AL CREAR LA CIUDAD");
     }
   }
-
-  async update(nombre_ciudad, id_ciudad) {
+  // Método para actualizar una ciudad
+  async update(id, campos) {
     try {
-      const [result] = await connection.query("UPDATE ciudades SET nombre_ciudad = ? WHERE id_ciudad = ?", 
-        [nombre_ciudad, id_ciudad]);
-      if (result.affectedRows === 0) {
-        throw new Error("Ciudad no encontrada");
+      let query = "UPDATE ciudades SET ";
+      let params = [];
+      // Construimos dinámicamente la consulta de actualización solo con los campos proporcionados
+      for (const [key,value] of Object.entries(campos)) {
+        query += `${key} = ?, `;
+        params.push(value);
       }
-      return { id_ciudad, nombre_ciudad }
+      // Eliminamos la última coma y espacio de la consulta
+      query = query.slice(0, -2);
+      // Añadimos la condición WHERE para seleccionar el producto por su ID
+      query += "WHERE id_ciudad = ?";
+      params.push(id);
+      const [result] = await connection.query(query, params);
+      return result.affectedRows > 0 ? {id, ...campos} : null;
     } catch (error) {
-      throw new Error("ERROR: Al Actualizar la Ciudad");
+      console.log("Hola mundo"+error);
+      
+      throw new Error("ERROR: AL ACTUALIZAR LA CIUDAD");
     }
   }
-
-  async updateParcial(campos,id_ciudad) {
-    try {
-      let sql = "UPDATE ciudades SET ";
-      for (let cont = 0; cont < Object.keys(campos).length; cont++) {
-        let value = Object.keys(campos)[cont];
-        sql += `${value} = '${campos[value]}'`;
-        if (cont == Object.keys(campos).length - 1) {
-          sql += "";
-        }
-        else {
-          sql += ",";
-        }
-      }
-      sql += ` WHERE id_ciudad = ${id_ciudad}`;
-      const [result] = await connection.query(sql);
-      if (result.affectedRows === 0) { throw new Error("Ciudad no encontrada"); }
-      return { mensaje: "Ciudad Actualizada" }
-    } catch (error) {
-      throw new Error("ERROR: Al Actualizar la Ciudad parcialmente");
-    }
-  }
-  
-  async relacionadaConUsuarios(id_ciudad) {
-    const [usuarios] = await connection.query("SELECT * FROM usuarios WHERE id_ciudad = ?",[id_ciudad]);
-    return usuarios.length > 0;    
-  }
-  
-  async delete(id_ciudad) {
-
-    const ciudadRelacionado = await this.relacionadaConUsuarios(id_ciudad);
-
-    if (ciudadRelacionado) {
-      return{
-        error: true,
-        mensaje: "No se puede eliminar la Ciudad por que se encuentra asociada a uno o mas Usuarios"
-      };
-    }
-
-    const [result] = await connection.query("DELETE FROM ciudades WHERE id_ciudad = ?",[id_ciudad]);
+  // Método para eliminar una ciudad
+  async delete(id) {
+    // Procedemos con la eliminación si no está relacionada
+    const [result] = await connection.query("DELETE FROM ciudades WHERE id_ciudad = ?",[id]);
 
     if (result.affectedRows === 0) {
       return{
         error : true,
-        mensaje: "Ciudad no encontrada"
+        mensaje: "NO SE PUDO ELIMINAR LA CIUDAD, OCURRIO UN ERROR INESPERADO.",
       };
-    }
-    
+    }    
     return{
       error: false,
-      mensaje: "Ciudad eliminada de manera Exitosa"
+      mensaje: "CIUDAD ELIMINADA DE MANERA EXITOSA.",
     }
   }
-  // Método para listar los productos de una categoría
-  async ciudades(id_ciudad) {
+  // Método para listar los usuarios de una ciudad
+  async usuarios(id_ciudad) {
     const [rows] = await connection.query(
-      "SELECT * FROM ciudades WHERE id_ciudad = ?",
+      "SELECT * FROM usuarios WHERE id_ciudad = ?",
       [id_ciudad]
     );
     return rows;
