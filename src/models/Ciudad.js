@@ -1,6 +1,6 @@
 import connection from "../utils/db.js";
 
-class Ciudades{
+class Ciudad{
 
   // Método para obtener todas las categorías
   async getAll() {
@@ -11,7 +11,7 @@ class Ciudades{
       throw new Error("ERROR: AL OBTENER CIUDADES");
     }
   }
-
+  // Método para obtener una ciudad por su id
   async getById(id) {
     try {
       const [rows] = await connection.query("SELECT * FROM ciudades WHERE id_ciudad = ?",[id]);
@@ -22,7 +22,7 @@ class Ciudades{
       // Retorna la ciudad encontrada
       return rows[0];
     } catch (error) {
-      throw new Error("ERROR AL OBTENER LA CIUDAD");
+      throw new Error("ERROR: AL OBTENER LA CIUDAD");
     }
   }
   // Método para crear una nueva ciudad
@@ -57,8 +57,6 @@ class Ciudades{
       const [result] = await connection.query(query, params);
       return result.affectedRows > 0 ? {id, ...campos} : null;
     } catch (error) {
-      console.log("Hola mundo"+error);
-      
       throw new Error("ERROR: AL ACTUALIZAR LA CIUDAD");
     }
   }
@@ -88,4 +86,4 @@ class Ciudades{
   }
 }
 
-export default Ciudades;
+export default Ciudad;

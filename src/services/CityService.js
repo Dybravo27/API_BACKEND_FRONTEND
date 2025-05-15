@@ -1,9 +1,9 @@
-import Ciudades from "../models/Ciudades.js";
-class CiudadService {
-  static async getCiudades()
+import Ciudad from "../models/Ciudad.js";
+class CityService {
+  static async getCities()
   {
     try {
-      const ciudadInstance = new Ciudades();
+      const ciudadInstance = new Ciudad();
       const ciudad = await ciudadInstance.getAll();
       if (ciudad.length === 0) {
         return {
@@ -27,10 +27,10 @@ class CiudadService {
       };
     }
   }
-  static async getCiudadById(id)
+  static async getCityById(id)
   {
     try {
-      const ciudadInstance = new Ciudades();
+      const ciudadInstance = new Ciudad();
       const ciudad = await ciudadInstance.getById(id);
       // Validamos si no hay ciudades
       if (ciudad.length === 0) {
@@ -59,10 +59,10 @@ class CiudadService {
       };
     }
   }
-  static async createCiudad(nombre_ciudad)
+  static async createCity(nombre_ciudad)
   {
     try {
-      const ciudadInstance = new Ciudades();
+      const ciudadInstance = new Ciudad();
       const ciudad = await ciudadInstance.create(nombre_ciudad);
       // Validamos si no se pudo crear la categoría
       if (ciudad === null) {
@@ -87,10 +87,10 @@ class CiudadService {
       };
     }
   }
-  static async updateCiudad(id, campos)
+  static async updateCity(id, campos)
   {
     try {
-      const ciudadInstance = new Ciudades();
+      const ciudadInstance = new Ciudad();
       // Consultamos la ciudad por id
       const ciudadExistente = await ciudadInstance.getById(id);
       // Validamos si no existe la ciudad
@@ -125,10 +125,10 @@ class CiudadService {
       };
     }
   }
-  static async deleteCiudad(id)
+  static async deleteCity(id)
   {
     try {
-      const ciudadInstance = new Ciudades();
+      const ciudadInstance = new Ciudad();
       // Consultamos la ciudad por id
       const ciudadExistente = await ciudadInstance.getById(id);
       // Validamos si no existe la ciudad
@@ -176,4 +176,4 @@ class CiudadService {
   }
 }
 
-export default CiudadService;
+export default CityService;
