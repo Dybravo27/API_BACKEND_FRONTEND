@@ -1,5 +1,5 @@
 import express from "express";
-import CiudadesController from "../controller/CiudadesController.js";
+import CiudadesController from "../controller/CiudadController.js";
 import { camposCiudad, parcialesCiudades } from "../middlewares/ciudades/index.js";
 
 // Creamos una instancia del controlador

@@ -1,2 +1,2 @@
-export * from "./camposCiudades.js";
-export * from "./parcialesCiudades.js";
+export * from "./camposCiudad.js";
+export * from "./parcialesCiudad.js";
