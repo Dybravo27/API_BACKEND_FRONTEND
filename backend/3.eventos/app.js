@@ -174,6 +174,11 @@ usuario.addEventListener("blur", limpiar);
 contrasena.addEventListener("blur", limpiar);
 ciudad.addEventListener("blur", limpiar);
 
+
+
+
+
+
 // nombre.addEventListener("keydown", (event) => {
 //   let pal = event.target.value;
 //   if (pal.length >= 10 && event.key != "Backspace") {
