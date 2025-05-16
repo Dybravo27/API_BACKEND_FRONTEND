@@ -15,9 +15,6 @@
               <a href="index.html">Registrar usuario</a>
             </li>
             <li>
-              <a  href="inicioSesion.html">Inicio sesion usuario</a>
-            </li>
-            <li>
               <a href="ciudadForm.html">Ciudad</a>
             </li>
             <li>
@@ -32,77 +29,93 @@
       </div>
 
       <div class="container">
-        <h1>TABLA USUARIOS</h1>
+        <h1>REGISTRO USUARIOS</h1>
       </div>
     </header>
-    <main>
-      <section>
-        <div class="container">
-          <div class="card">
-            <h2 class="center">Ingresar sus datos de usuario</h2>
+   
+    <form action="#" class="formulario" novalidate autocomplete="off">
+      <h3>USUARIOS</h3>
+      <div class="padre_input">
+          <input type="text" name="documento" id="documento" class="formulario__campo" placeholder="Ingresar documento" required min="6">
+      </div>
+      <div class="padre_input">
+          <input type="text" name="nombre" id="nombre" class="formulario__campo" placeholder="Ingresar nombre" required min="4">
+      </div>
+      <div class="padre_input">
+          <input type="text" name="apellido" id="apellido" class="formulario__campo " placeholder="Ingrese apellido" required min="5">
+      </div>
+      <div class="padre_input">
+          <input type="text" name="telefono" id="telefono" class="formulario__campo " placeholder="Ingrese telefono" required max="10" min="10">
+      </div>
+      <div class="padre_input">
+          <input type="password" name="contrasenia" id="contrasenia" class="formulario__campo " placeholder="Ingrese contraseña" required >
+      </div>
+      <div class="padre_input">
+        <select name="ciudad" id="ciudad" class="formulario__campo" required>
+            <option>Seleccionar ciudad...</option>
+            <option value="1">Bucaramanga</option>
+            <option value="2">Bogota</option>
+            <option value="3">Giron</option>
+        </select>
+    </div>
+      <div class="padre_input">
+          
+          <div class="formulario__radios" id="formulario__radios">
+            <label for="formulario__radios" class="titulo_generos">SELECCIONAR GENERO:</label>  
 
-            <form action="#" novalidate>
-
-              <div  >
-                <input type="text" name="Nombre" placeholder="Nombre" autocomplete="off" required>
+             <div class="formulario__radio radio">
+                  <input type="radio" id="masculino" name="genero" required value="1">
+                  <label for="masculino">Masculino</label>            
               </div>
-              <div >
-                <input type="text" name="Apellido" placeholder="Apellido" autocomplete="off" required>
+              <div class="formulario__radio radio">
+                  <input type="radio" id="femenino" name="genero" required value="2">
+                  <label for="femenino">femenino</label>            
               </div>
-              <div >
-                <input type="tel" name="Telefono" placeholder="Telefono" autocomplete="off" required>
-              </div>
-              <div class="form_control" >
-                <select name="ciudad" id="ciudad" required>
-                  <option >Seleccione</option>
-                  <option value="1">Bucaramanga</option>
-                  <option value="2">Florida</option>
-                  <option value="3">Giron</option>
-                </select>
-              </div>
-
-              <div >  
-                <input type="number" name="Documento" placeholder="Documento" required>
-              </div>
-              <div>
-                <input type="text" name="Usuario" placeholder="Usuario" required>
-              </div>
-              <div>
-                <input type="password" name="Contrasena" placeholder="Contraseña" required>
-              </div>
-
-             
-              
-              <div>
-                <h3>Genero</h3>
-                <div class="input__generos">
-                  <input type="radio" name="generos" id="hombre" required value="hombre"><label for="hombre">hombre</label >
-                  <input type="radio" name="generos" id="mujer" required value="mujer"><label for="mujer">mujer</label >
-                  </div>
-                
-              </div>
-              
-              <div class="checkbox__padre">
-                <h3>Lenguajes</h3>
-                <div class="checkbox__hijo"><input required type="checkbox" name="habilidades[]" value="1"id="HTML"><label for="HTML">HTML</label></div>
-                <div class="checkbox__hijo"><input required type="checkbox" name="habilidades[]" value="2"id="CSS"><label for="CSS">CSS</label></div>
-                <div class="checkbox__hijo"><input required type="checkbox" name="habilidades[]" value="3"id="JS"><label for="JS">JS</label></div>
-                <div class="checkbox__hijo"><input required type="checkbox" name="habilidades[]" value="4"id="C#"><label for="C#">C#</label></div>
-                <div class="checkbox__hijo"><input required type="checkbox" name="habilidades[]" value="5"id="JAVA"><label for="JAVA">JAVA</label></div>
-              </div>
-
-              <div class="uso_polit">
-                <label for="politicas" class="text_polit">De acuerdo de uso y politicas</label>
-                <input put class="check_polit " type="checkbox" id="politicas">
-              </div>
-
-              <button type="submit" id="btn_validar" name="btn_validar">Validar</button>
-            </form> 
-
           </div>
-        </div>
-      </section>
-    </main>
-    <script type="module" src="app.js" ></script>
+      </div>
+
+      <div class="padre_input">
+          
+          <div class="formulario__checboxs" id="formulario__checboxs">
+            <label for="formulario__checboxs" class="titulo_lenguajes">SELECCIONAR LOS LENGUAJES</label>
+              <div class="formulario__checbox checbox">
+                  <input type="checkbox" id="JavaScript" name="lenguaje" required value="1">
+                  <label for="JavaScript">C#</label>
+              </div>
+              <div class="formulario__checbox checbox">
+                  <input type="checkbox" id="Java" name="lenguaje" required value="2">
+                  <label for="Java">HTML</label>
+              </div>
+              <div class="formulario__checbox checbox">
+                  <input type="checkbox" id="Csharp" name="lenguaje" required value="3">
+                  <label for="Csharp">JS</label>
+              </div>
+          </div>
+      </div>
+
+      
+      <button  type="submit" class="formulario__boton">GUARDAR</button>
+  </form>
+
+  <!-- <table class="tabla">
+      <thead class="tabla__encabezado">
+          <tr>
+              <th>ID</th>
+              <th> No Documento</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Telefono</th>
+              <th>Contraseña</th>
+              <th>Genero</th>
+              <th>Ciudad</th>
+          </tr>
+      </thead>
+      <tbody class="tabla__cuerpo">
+          <tr class="tabla__fila">
+              
+          </tr>
+      </tbody>
+  </table> -->
+    <script type="module" src="./validaciones/usuario.js" ></script>
 </body>
 </html>

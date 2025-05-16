@@ -14,9 +14,7 @@
             <li>
               <a href="index.html">Registrar usuario</a>
             </li>
-            <li>
-              <a  href="inicioSesion.html">Inicio sesion usuario</a>
-            </li>
+            
             <li>
               <a href="ciudadForm.html">Ciudad</a>
             </li>
@@ -34,28 +32,19 @@
         <h1>TABLA CIUDAD</h1>
       </div>
     </header>
-    <main>
-      <section>
-        <div class="container">
-          <div class="card">
-            <h2 class="center">Ingresar nueva ciudad</h2>
+    
+    <form action="#" class="formulario" novalidate autocomplete="off">
+      <h3>ingresar nueva ciudad</h3>
+      
+      <div class="padre_input">
+          <input type="text" name="nombre" id="nombre" class="formulario__campo" placeholder="nueva ciudad" required min="4">
+      </div>
+      
+      
 
-            <form action="#" novalidate>
-
-              <div  >
-                <input type="text" name="newCiudad" placeholder="Ingresar el nombre de la ciudad" autocomplete="off" required>
-              </div>
-              
-
-              <button >Guardar ciudad</button>
-            </form> 
-            
-
-          </div>
-        </div>
-      </section>
-
-    </main>
+      
+      <button  type="submit" class="formulario__boton">GUARDAR CIUDAD</button>
+  </form>
     <table class="tabla tabla--pequeña">
               <thead class="tabla__encabezado">
                 <tr>

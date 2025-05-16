@@ -14,9 +14,7 @@
             <li>
               <a href="index.html">Registrar usuario</a>
             </li>
-            <li>
-              <a  href="inicioSesion.html">Inicio sesion usuario</a>
-            </li>
+            
             <li>
               <a href="ciudadForm.html">Ciudad</a>
             </li>
@@ -34,25 +32,17 @@
         <h1>TABLA LENGUAJE</h1>
       </div>
     </header>
-    <main>
-      <section>
-        <div class="container">
-          <div class="card">
-            <h2 class="center">Ingresar nuevo lenguaje</h2>
+    <form action="#" class="formulario" novalidate autocomplete="off">
+      <h3>ingresar nuevo lenguaje</h3>
+      
+      <div class="padre_input">
+          <input type="text" name="nombre" id="nombre" class="formulario__campo" placeholder="nuevo lenguaje" required min="4">
+      </div>
+      
+      
 
-            <form action="#" novalidate>
-
-              <div  >
-                <input type="text" name="newLenguaje" placeholder="Ingresar el nombre del lenguaje" autocomplete="off" required>
-              </div>
-              
-
-              <button >Guardar lenguaje</button>
-            </form> 
-
-          </div>
-        </div>
-      </section>
-    </main>
+      
+      <button  type="submit" class="formulario__boton">GUARDAR LENGUAJE</button>
+  </form>
   </body>
 </html>
