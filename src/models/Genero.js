@@ -25,7 +25,7 @@ class Genero{
       throw new Error("ERROR: AL OBTENER EL GENERO");
     }
   }
-
+  // Método para crear un nuevo genero
   async create(genero) {
     try {
       const [result] = await connection.query("INSERT INTO generos (genero) VALUES (?)",

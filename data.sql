@@ -29,8 +29,8 @@ create table usuarios (
 id_usuario int auto_increment,
 nombre varchar(50),
 apellido varchar(50),
-telefono int(10),
-documento int(10),
+telefono bigint,
+documento bigint,
 usuario varchar(100),
 contrasena varchar(100),
 id_ciudad int,
@@ -70,4 +70,4 @@ insert into generos(genero) values
 select * from usuarios;
 drop table ciudades;
 insert into usuarios (nombre, apellido, telefono, documento, usuario, contrasena, id_ciudad, id_genero) values 
-('Dylan', 'Bravo', 3002040190, 123456789, 'Dybravo27', '150195', 3, 3);
+('Dylan', 'Bravo', 3204019091, 123456789, 'Dybravo27', '150195', 1, 1);

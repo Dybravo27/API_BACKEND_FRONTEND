@@ -1,4 +1,3 @@
-import Usuario from "../models/Usuario.js";
 import { ResponseProvider } from "../providers/ResponseProviders.js";
 import UserService from "../services/UserService.js";
 class UsuarioController {
@@ -89,6 +88,8 @@ class UsuarioController {
         201
       );
     } catch (error) {
+      console.log(error);
+      
       // Llamamos el provider para centralizar los mensajes de respuesta
       return ResponseProvider.error(
         res,

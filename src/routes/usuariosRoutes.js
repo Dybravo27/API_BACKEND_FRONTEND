@@ -20,6 +20,7 @@ router.put('/:id', UsuarioController.updateUsuario);
 // Actualizar parcialmente un usuario
 router.patch('/:id', parcialesUsuario, UsuarioController.updateUsuario);
 
+// Eliminar un usuario
 router.delete('/:id', UsuarioController.deleteUsuario);
 
 export default router;

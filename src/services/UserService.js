@@ -103,7 +103,7 @@ class UserService {
         usuario,
         contrasena,
         id_ciudad,
-        id_genero,
+        id_genero
       );
       // Retornamos el nuevo usuario creado
       return {

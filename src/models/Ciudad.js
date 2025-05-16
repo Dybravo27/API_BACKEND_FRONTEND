@@ -2,7 +2,7 @@ import connection from "../utils/db.js";
 
 class Ciudad{
 
-  // Método para obtener todas las categorías
+  // Método para obtener todas las ciudades
   async getAll() {
     try {
       const [rows] = await connection.query("SELECT * FROM ciudades");

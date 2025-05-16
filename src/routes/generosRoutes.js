@@ -17,7 +17,7 @@ router.post('/', camposGenero, GeneroController.createGenero);
 // Actualizar un genero
 router.put('/:id', camposGenero, GeneroController.updateGenero);
 
-// Actualizar parcialmente una ciudad
+// Actualizar parcialmente un genero
 router.patch('/:id', parcialesGenero, GeneroController.updateGenero);
 
 // Eliminar un genero
