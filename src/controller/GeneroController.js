@@ -4,7 +4,7 @@ class GeneroController {
   // Obtener todas las Ciudades
   static getAllGeneros = async (req, res) => {
     try {
-      // Llamamos al servicio para obtener las ciudades
+      // Llamamos al servicio para obtener los generos
       const response = await GenderService.getGenders();
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
@@ -16,7 +16,7 @@ class GeneroController {
       }
       else {
         // Llamamos el provider para centralizar los mensajes de respuesta
-        return ResponseProvider.sucess(
+        return ResponseProvider.success(
           res,
           response.data,
           response.message,
@@ -32,7 +32,7 @@ class GeneroController {
   static getGeneroById = async (req, res) => {
     const { id } = req.params;
     try {
-      // Llamamos al servicio para obtener las ciudades
+      // Llamamos al servicio para obtener los generos
       const response = await GenderService.getGenderById(id);
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
@@ -44,7 +44,7 @@ class GeneroController {
       }
       else {
         // Llamamos el provider para centralizar los mensajes de respuesta
-        return ResponseProvider.sucess(
+        return ResponseProvider.success(
           res,
           response.data,
           response.message,
@@ -70,7 +70,7 @@ class GeneroController {
         );
       } else{
         // Llamamos el provider para centralizar los mensajes de respuesta
-        return ResponseProvider.sucess(
+        return ResponseProvider.success(
           res,
           response.data,
           response.message,
@@ -99,7 +99,7 @@ class GeneroController {
         );
       }
       // Retornamos la respuesta cuando se actualiza correctamente
-      ResponseProvider.sucess(
+      ResponseProvider.success(
         res,
         genero.data,
         genero.message,
@@ -124,7 +124,7 @@ class GeneroController {
         );
       } else {
         // Llamamos el provider para centralizar los mensajes de respuesta
-        ResponseProvider.sucess(
+        ResponseProvider.success(
           res,
           response.data,
           response.message,

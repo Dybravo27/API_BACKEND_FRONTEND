@@ -3,8 +3,8 @@ import { campos } from "./camposU.js";
 
 export function camposUsuario(req, res, next) {
   // Arreglo para almacenar los errores de validación
-  // Recorremos el arreglo de campos a validar
   const errors = [];
+  // Recorremos el arreglo de campos a validar
   for (const campo of campos) {
     const {
       name, // Nombre del campo a validar

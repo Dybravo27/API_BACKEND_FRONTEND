@@ -51,7 +51,7 @@ class Ciudad{
       }
       // Eliminamos la última coma y espacio de la consulta
       query = query.slice(0, -2);
-      // Añadimos la condición WHERE para seleccionar el producto por su ID
+      // Añadimos la condición WHERE para seleccionar la ciudad por su ID
       query += "WHERE id_ciudad = ?";
       params.push(id);
       const [result] = await connection.query(query, params);

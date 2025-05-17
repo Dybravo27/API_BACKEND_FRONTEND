@@ -41,6 +41,7 @@ primary key (id_usuario)
 );
 
 create table lenguaje_usuario (
+id_lenguaje_usuario int auto_increment primary key,
 id_usuario int,
 id_lenguaje int,
 foreign key (id_usuario) references usuarios (id_usuario),

@@ -1,7 +1,7 @@
 import { ResponseProvider } from "../../providers/ResponseProviders.js";
-import { campos } from "./camposG.js";
+import { campos } from "./camposL.js";
 
-export function camposGenero(req, res, next) {
+export function camposLenguaje(req, res, next) {
   // Arreglo para almacenar los errores de validación
   const errors = [];
   // Recorremos el arreglo de campos a validar

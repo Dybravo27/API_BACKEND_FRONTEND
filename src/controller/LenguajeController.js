@@ -1,12 +1,11 @@
 import { ResponseProvider } from "../providers/ResponseProviders.js";
-import CityService from "../services/CityService.js";
-
-class CiudadController {
+import LanguageService from "../services/LanguageService.js";
+class LenguajeController {
   // Obtener todas las Ciudades
-  static getAllCiudades = async (req, res) => {
+  static getAllLenguajes = async (req, res) => {
     try {
-      // Llamamos al servicio para obtener las ciudades
-      const response = await CityService.getCities();
+      // Llamamos al servicio para obtener los lenguajes
+      const response = await LanguageService.getLanguages();
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
         return ResponseProvider.error(
@@ -14,8 +13,7 @@ class CiudadController {
           response.message,
           response.code
         );
-      }
-      else {
+      } else {
         // Llamamos el provider para centralizar los mensajes de respuesta
         return ResponseProvider.success(
           res,
@@ -29,12 +27,12 @@ class CiudadController {
       ResponseProvider.error(res, "ERROR: AL INTERNO DEL SERVIDOR", 500);
     }
   };
-  // Obtener una ciudad por el ID
-  static getCiudadById = async (req, res) => {
+  // Obtener un genero por el ID
+  static getLenguajeById = async (req, res) => {
     const { id } = req.params;
     try {
-      // Llamamos al servicio para obtener las ciudades
-      const response = await CityService.getCityById(id);
+      // Llamamos al servicio para obtener los lenguajes
+      const response = await LanguageService.getLanguageById(id);
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
         return ResponseProvider.error(
@@ -57,11 +55,11 @@ class CiudadController {
       ResponseProvider.error(res, "ERROR: AL INTERNO DEL SERVIDOR", 500);
     }
   };
-  // Crear una nueva ciudad
-  static createCiudad = async(req,res) => {
-    const { nombre_ciudad } = req.body;
+  // Crear un nuevo lenguaje
+  static createLenguaje = async(req,res) => {
+    const { nombre_lenguaje } = req.body;
     try {
-      const response = await CityService.createCity(nombre_ciudad);
+      const response = await LanguageService.createLanguage(nombre_lenguaje);
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
         return ResponseProvider.error(
@@ -82,40 +80,40 @@ class CiudadController {
       // Llamamos el provider para centralizar los mensajes de respuesta
       ResponseProvider.error(res,"ERROR AL INTERNO EN EL SERVIDOR",500);
     }
-  }
-  // Actualizar una ciudad
-  static updateCiudad = async (req, res) => {
+  }  
+  // Actualizar un lenguaje
+  static updateLenguaje = async (req, res) => {
     const { id } = req.params;
     // Los campos a actualizar se pasan en el cuerpo de la solicitud
     const campos = req.body;
     try {
-      // Crear una instancia de la clase CiudadServicio
-      const ciudad = await CityService.updateCity(id, campos);
-      // Validamos si no se pudo actualizar la ciudad
-      if (ciudad.error) {
+      // Crear una instancia de la clase languageService
+      const lenguaje = await LanguageService.updateLanguage(id, campos);
+      // Validamos si no se pudo actualizar el genero
+      if (lenguaje.error) {
         ResponseProvider.error(
           res,
-          ciudad.message,
-          ciudad.code
+          lenguaje.message,
+          lenguaje.code
         );
       }
       // Retornamos la respuesta cuando se actualiza correctamente
       ResponseProvider.success(
         res,
-        ciudad.data,
-        ciudad.message,
-        ciudad.code
+        lenguaje.data,
+        lenguaje.message,
+        lenguaje.code
       );
     } catch (error) {
       // Llamamos el provider para centralizar los mensajes de respuesta
       ResponseProvider.error(res, "ERROR AL INTERNO EN EL SERVIDOR", 500);
     }
   }
-  // Eliminar una ciudad
-  static deleteCiudad = async (req, res) => {
+  // Eliminar un lenguaje
+  static deleteLenguaje = async (req, res) => {
     const { id } = req.params;
     try {
-      const response = await CityService.deleteCity(id);
+      const response = await LanguageService.deleteLanguage(id);
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
         ResponseProvider.error(
@@ -136,7 +134,7 @@ class CiudadController {
       // Llamamos el provider para centralizar los mensajes de respuesta
       ResponseProvider.error(res, "ERROR AL INTERNO EN EL SERVIDOR", 500);
     }
-  }
+  } 
 }
 
-export default CiudadController;
+export default LenguajeController;

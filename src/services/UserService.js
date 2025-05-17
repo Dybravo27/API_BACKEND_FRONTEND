@@ -28,7 +28,7 @@ class UserService {
       // Retornamos un error en caso de excepción
       return {
         error: false,
-        code: 200,
+        code: 500,
         message: "ERROR: AL OBTENER LOS USUARIOS",
         data: usuario,
       };

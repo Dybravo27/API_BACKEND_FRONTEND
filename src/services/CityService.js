@@ -21,7 +21,7 @@ class CityService {
     } catch (error) {
       return {
         error: false,
-        code: 200,
+        code: 500,
         message: "ERROR: AL OBTENER LAS CIUDADES",
         data: ciudad,
       };

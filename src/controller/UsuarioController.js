@@ -16,7 +16,7 @@ class UsuarioController {
       }
       else {
         // Llamamos el provider para centralizar los mensajes de respuesta
-        return ResponseProvider.sucess(
+        return ResponseProvider.success(
           res,
           response.data,
           response.message,
@@ -32,7 +32,7 @@ class UsuarioController {
   static getUsuarioById = async (req, res) => {
     const { id } = req.params;
     try {
-      // Llamamos al servicio para obtener las ciudades
+      // Llamamos al servicio para obtener los usuarios
       const response = await UserService.getUserById(id);
       if (response.error) {
         // Llamamos el provider para centralizar los mensajes de respuesta
@@ -44,7 +44,7 @@ class UsuarioController {
       }
       else {
         // Llamamos el provider para centralizar los mensajes de respuesta
-        return ResponseProvider.sucess(
+        return ResponseProvider.success(
           res,
           response.data,
           response.message,
@@ -81,7 +81,7 @@ class UsuarioController {
         );
       }
       // Retornamos el usuario creado
-      return ResponseProvider.sucess(
+      return ResponseProvider.success(
         res,
         Usuario,
         "USUARIO CREADO CORRECTAMENTE",
@@ -114,7 +114,7 @@ class UsuarioController {
         );
       }
       // Retornamos el usuario actualizado
-      return ResponseProvider.sucess(
+      return ResponseProvider.success(
         res,
         usuario,
         "USUARIO ACTUALIZADO CORRECTAMENTE",
@@ -145,7 +145,7 @@ class UsuarioController {
         );
       }
       // Retornamos el producto eliminado
-      return ResponseProvider.sucess(
+      return ResponseProvider.success(
         res,
         response.data,
         response.message,
