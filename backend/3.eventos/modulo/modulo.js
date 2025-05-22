@@ -1,4 +1,4 @@
-export const validar=(event)=>{
+export const validar= async (event, endpoint)=>{
   let info={};
   event.preventDefault();
 
@@ -88,7 +88,7 @@ export const validar=(event)=>{
           let afterend = document.createElement('span');
           afterend.textContent = "Debe seleccionar un genero"
           contenRadios.insertAdjacentElement('afterend', afterend);
-      }
+        }
   }
 
 
@@ -97,7 +97,7 @@ export const validar=(event)=>{
   })
   
   if(cheboxs.length>0){
-      const cheboxs_seleccionados=cheboxs.filter((checbox) => checbox.checked)
+      const cheboxs_seleccionados=cheboxs.filter((checbox) => checbox.checked);
       if(cheboxs_seleccionados.length<3){
           let pad=cheboxs[0].parentElement;
           let padre_checboxs=pad.parentElement;
