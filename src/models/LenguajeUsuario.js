@@ -52,11 +52,32 @@ class LenguajeUsuario{
       throw new Error("ERROR: AL CREAR EL NUEVO LENGUAJE PARA EL USUARIO");
     }
   }
+  // Método para actualizar un lenguaje
+  async update(id, campos) {
+    try {
+      let query = "UPDATE lenguaje_usuario SET ";
+      let params = [];
+      // Construimos dinámicamente la consulta de actualización solo con los campos proporcionados
+      for (const [key,value] of Object.entries(campos)) {
+        query += `${key} = ?, `;
+        params.push(value);
+      }
+      // Eliminamos la última coma y espacio de la consulta
+      query = query.slice(0, -2);
+      // Añadimos la condición WHERE para seleccionar el lenguaje por su ID
+      query += "WHERE id_lenguaje_usuario = ?";
+      params.push(id);
+      const [result] = await connection.query(query, params);
+      return result.affectedRows > 0 ? {id, ...campos} : null;
+    } catch (error) {
+      throw new Error("ERROR: AL ACTUALIZAR EL LENGUAJE USUARIO");
+    }
+  }
   // Método para eliminar los lenguajes asignados a un usuario
-  async delete(id_usuario) {
+  async delete(id_lenguaje_usuario) {
     try {
       // Procedemos con la eliminación si no está relacionada
-      const [result] = await connection.query("DELETE FROM lenguaje_usuario WHERE id_usuario = ?",[id_usuario]);
+      const [result] = await connection.query("DELETE FROM lenguaje_usuario WHERE id_lenguaje_usuario = ?",[id_lenguaje_usuario]);
       if (result.affectedRows === 0) {
         return{
           error : true,

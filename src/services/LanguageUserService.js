@@ -93,8 +93,6 @@ class LanguageUserService  {
         data: { id:lenguajeUsuarioCreado.insertId, ...campos},
       };
     } catch (error) {
-      console.log("Metodo crear " + error);
-      
       return {
         error: true,
         code: 500,
@@ -116,22 +114,9 @@ class LanguageUserService  {
           message: "USUARIO NO ENCONTRADO",
         };
       }
-      // eliminamos el lenguaje y el resultado lo asignamos a una variable
-      const registroLenguajeUsuarioEliminado = await this.deleteLanguageUser(id);
-      // Validamos si no se pudo actualizar el lenguaje
-      if (registroLenguajeUsuarioEliminado.error) {        
-        return{
-          error: true,
-          code: 400,
-          message: "ERROR AL ACTUALIZAR EL LENGUAJE DEL USUARIO",
-        };
-      }
-      // Asignamos los nuevos lenguajes del usuario
-      const registroLenguajeUsuarioCreado = await this.createLanguageUser(campos);
+      const lenguajeUsuario = await lenguajeUsuarioInstance.update(id, campos);
       // Validamos si ocurre algun error al crear los nuevos lenguajes
-      if (registroLenguajeUsuarioCreado.error) {
-        console.log(registroLenguajeUsuarioCreado);
-        
+      if (lenguajeUsuario.error) {
         return{
           error: true,
           code: 400,
@@ -143,7 +128,7 @@ class LanguageUserService  {
         error: false,
         code: 200,
         message: "LENGUAJE ACTUALIZADO CORRECTAMENTE",
-        data: registroLenguajeUsuarioCreado.data,
+        data: lenguajeUsuario.data,
       };
     } catch (error) {
       return {
