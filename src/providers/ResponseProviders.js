@@ -8,9 +8,9 @@ export class ResponseProvider {
    * @returns 
    */
 
-  static sucess(res, data, message = "OPERACION EXITOSA", status = 200) {
+  static success(res, data, message = "OPERACION EXITOSA", status = 200) {
     return res.status(status).json({
-      sucess: true,
+      success: true,
       code: status,
       message,
       data,

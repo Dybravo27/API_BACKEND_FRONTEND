@@ -1,10 +1,13 @@
 import mysql from "mysql2/promise";
+import dotenv from "dotenv";
 
+dotenv.config();
+// Configuracion de la conexion
 const connection = await mysql.createConnection({
-    host: "localhost",
-    user: "dylan_dom_api",
-    password: "1100954165",
-    database: "eventos_dom_api"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 export default connection;

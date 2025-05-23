@@ -1,16 +1,25 @@
 import express from "express";
-import LenguajesController from "../controller/LenguajesController.js";
+import LenguajeController from "../controller/LenguajeController.js";
+import { camposLenguaje, parcialesLenguaje } from "../middlewares/lenguajes/index.js";
 
+// Creamos una instancia del controlador
 const router = express.Router();
 
-router.get('/', LenguajesController.getAllLenguajes);
+// Obtener todos los lenguajes
+router.get('/', LenguajeController.getAllLenguajes);
 
-router.post('/', LenguajesController.createLenguajes);
+// Obtener un lenguaje por ID
+router.get('/:id', LenguajeController.getLenguajeById);
 
-router.put('/:id_lenguaje', LenguajesController.updateLenguajes);
+// Crear un nuevo lenguaje
+router.post('/', camposLenguaje, LenguajeController.createLenguaje);
 
-router.patch('/:id_lenguaje', LenguajesController.updateParcialLenguajes);
+// Actualizar un lenguaje
+router.put('/:id', camposLenguaje, LenguajeController.updateLenguaje);
 
-router.delete('/:id_lenguaje', LenguajesController.deleteLenguajes);
+// Actualizar parcialmente un lenguaje
+router.patch('/:id', parcialesLenguaje, LenguajeController.updateLenguaje);
+
+router.delete('/:id', LenguajeController.deleteLenguaje);
 
 export default router;
