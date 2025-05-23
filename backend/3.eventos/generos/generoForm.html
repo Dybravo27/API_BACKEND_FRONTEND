@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario ciudad</title>
-    <link rel="stylesheet" href="eventos.css">
+    <link rel="stylesheet" href="../eventos.css">
   </head>
   <body>
     <header>
@@ -12,17 +12,17 @@
         <nav>
           <ul >
             <li>
-              <a href="index.html">Registrar usuario</a>
+              <a href="../usuarios/usuarioForm.html">Registrar usuario</a>
             </li>
             
             <li>
-              <a href="ciudadForm.html">Ciudad</a>
+              <a href="../ciudades/ciudadForm.html">Ciudad</a>
             </li>
             <li>
               <a href="generoForm.html">Genero</a>
             </li>
             <li>
-              <a href="lenguajeForm.html">Lenguaje</a>
+              <a href="../lenguajes/lenguajeForm.html">Lenguaje</a>
             </li>
             
           </ul>
@@ -38,15 +38,16 @@
           <div class="card">
             <h2 class="center">Ingresar nuevo genero</h2>
 
-            <form action="#" novalidate>
-
-              <div  >
-                <input type="text" name="newGenero" placeholder="Ingresar el nombre del genero" autocomplete="off" required>
+            <form action="#" class="formulario" novalidate autocomplete="off">
+              <h3>Generos</h3>
+              <div class="padre_input">
+                <input type="text" name="genero" id="nombre_genero" class="formulario__campo" placeholder="Ingrese el nombre del genero" required min="4">
               </div>
-              
+              <button class="formulario__boton">Guardar</button>
+            </form>
+            <script type="module" src="genero.js"></script>
 
-              <button type="submit" class="formulario__boton">Guardar genero</button>
-            </form> 
+
 
           </div>
         </div>

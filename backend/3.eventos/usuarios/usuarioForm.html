@@ -1,0 +1,79 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos</title>
+  <link rel="stylesheet" href="../eventos.css">
+</head>
+<body>
+    <header>
+      <div  >
+        <nav>
+          <ul >
+            <li>
+              <a href="usuarios/usuarioForm.html">Usuario</a>
+            </li>
+            <li>
+              <a href="../ciudades/ciudadForm.html">Ciudad</a>
+            </li>
+            <li>
+              <a href="../generos/generoForm.html">Genero</a>
+            </li>
+            <li>
+              <a href="../lenguajes/lenguajeForm.html">Lenguaje</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+
+      <div class="container">
+        <h1>REGISTRO USUARIOS</h1>
+      </div>
+    </header>
+   
+    <form action="#" class="formulario" novalidate autocomplete="off">
+        <h3>USUARIOS</h3>
+        <div class="padre_input">
+            <input type="text" name="documento" id="documento" class="formulario__campo" placeholder="Ingresar su documento" required min="6">
+        </div>
+        <div class="padre_input">
+            <input type="text" name="nombre" id="nombre" class="formulario__campo" placeholder="Ingresar su nombre" required min="4">
+        </div>
+        <div class="padre_input">
+            <input type="text" name="apellido" id="apellido" class="formulario__campo " placeholder="Ingresar su apellido" required min="5">
+        </div>
+        <div class="padre_input">
+            <input type="text" name="telefono" id="telefono" class="formulario__campo " placeholder="Ingresar su telefono" required max="10" min="10">
+        </div>
+        <div class="padre_input">
+            <input type="password" name="contrasena" id="contrasenia" class="formulario__campo " placeholder="Ingresar su contraseña" required >
+        </div>
+        <div class="padre_input">
+            <label for="formulario__radios">Seleccione su genero:</label>
+            <div class="" id="formulario__radios">
+                
+            </div>
+        </div>
+
+        <div class="padre_input">
+            <label for="formulario__checboxs">Seleccione los lenguajes</label>
+            <div class="" id="formulario__checboxs">
+                
+            </div>
+        </div>
+
+        <div class="padre_input">
+            <select name="id_ciudad" id="ciudad" class="formulario__campo" required>
+                <option value="0">Seleccione</option>
+                
+            </select>
+        </div>
+        <button  type="submit" class="formulario__boton">Guardar</button>
+    </form>
+
+  
+    <script type="module" src="./validaciones/usuario.js" ></script>
+</body>
+</html>
