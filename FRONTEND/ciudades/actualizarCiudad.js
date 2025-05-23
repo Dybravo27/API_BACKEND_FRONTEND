@@ -6,20 +6,20 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 const formulario=document.querySelector("form");
-const nombre_lenguaje=document.querySelector('[name="lenguaje"]');
+const nombre_ciudad=document.querySelector('[name="lenguaje"]');
 
-const len=await get("lenguajes/"+id)
-const lenguaje=len.data;
+const ciu=await get("ciudades/"+id)
+const ciudad=ciu.data;
 
-nombre_lenguaje.value=lenguaje.lenguaje;
+nombre_ciudad.value=ciudad.ciudad;
 
 formulario.addEventListener('submit',async(event)=>{
     const info=await validar(event);
     if(info!=false){
-        const respuesta=await put(`lenguajes/${id}`,info)
+        const respuesta=await put(`ciudades/${id}`,info)
         console.log(respuesta);
     }
 })
 
-nombre_lenguaje.addEventListener("blur",limpiar);
-nombre_lenguaje.addEventListener("blur",validarMinimo)
+nombre_ciudad.addEventListener("blur",limpiar);
+nombre_ciudad.addEventListener("blur", validarMinimo)

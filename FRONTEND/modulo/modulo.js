@@ -169,8 +169,12 @@ export const agregaraDB=async(event,endpoint)=>{
 
             await post("lenguajeUsuarios", regi);
             }
-        }
-        if(respuesta.status==200)alert("El registro se ha realizaco correctamente");
+      }
+      
+      if (respuesta.status == 201) {
+        alert("El registro se ha realizaco correctamente")
+        location.reload();
+      }
         else alert("Ocurrio un error al guardar el registro")
     }
 }
@@ -250,7 +254,7 @@ export const validarContraseniaMensaje=event=>{
     if(!event.target.value.match(expresion)){
         if (event.target.nextElementSibling) event.target.nextElementSibling.remove();
         let afterend = document.createElement('span');
-        afterend.textContent = `la contraseña debe tener minimo una mayuscula, una minuscula, un caracter especial y 8 caracteres`
+        afterend.textContent = `La contraseña debe tener mínimo una mayuscula, una minuscula, un caracter especial y 8 caracteres`
         event.target.insertAdjacentElement('afterend', afterend);
         return false
     }else return true;
