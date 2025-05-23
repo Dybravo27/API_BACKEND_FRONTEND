@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario ciudad</title>
+    <link rel="stylesheet" href="../eventos.css">
+  </head>
+  <body>
+    <header class="encabezado">
+      <div  >
+        <nav>
+          <ul >
+            <li>
+              <a href="../usuarios/usuarioForm.html">Usuario</a>
+            </li>
+            <li>
+              <a href="ciudades/ciudadForm.html">Ciudad</a>
+            </li>
+            <li>
+              <a href="../generos/generoForm.html">Genero</a>
+            </li>
+            <li>
+              <a href="../lenguajes/lenguajeForm.html">Lenguaje</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+      <div class="container">
+        <h1>REGISTRO CIUDAD</h1>
+      </div>
+    </header>
+    
+    <form action="#" class="formulario" novalidate autocomplete="off">
+      <h3>ingresar nueva ciudad</h3>
+      
+      <div class="padre_input">
+          <input type="text" name="nombre" id="nombre" class="formulario__campo" placeholder="nueva ciudad" required min="4">
+      </div>
+      
+      
+
+      
+      <button  type="submit" class="formulario__boton">GUARDAR CIUDAD</button>
+  </form>
+  <script type="module" src="ciudad.js"></script>
+    <!-- <table class="tabla tabla--pequeña">
+              <thead class="tabla__encabezado">
+                <tr>
+                   <th>ID</th>
+                    <th>Nombre de la ciudad</th>
+                </tr>
+              </thead>
+              <tbody class="tabla__cuerpo">
+              <tr class="tabla__fila">
+            
+        </tr>
+    </tbody>
+</table> -->
+  </body>
+</html>

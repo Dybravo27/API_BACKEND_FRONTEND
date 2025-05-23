@@ -1,0 +1,218 @@
+/* 
+.uso_polit{
+  display: flex;
+}
+.text_polit{
+  justify-content: end;
+  
+  font-size: 16px;
+  
+
+}
+.check_polit{
+width: 160px;
+} */
+
+/*barra de navegacion*/
+ul {
+  display: grid;
+  grid-template-columns: auto  auto auto auto;
+  grid-template-rows: 50px;
+  background-color: #44613f;
+  
+  }
+  li {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  
+  }
+  a{
+    color: rgb(49, 246, 0);
+    text-decoration: none;
+    
+  }
+
+  li:hover{
+    background-color: #0a891d;
+    transition: 1s;
+  }
+
+
+
+
+.tabla--pequeña{
+    width: 30%;
+}  
+
+/* //---------------------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+/*---------------------------- ESTILOS INDEX ----------------------*/
+
+body{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+}
+.encabezado{
+    /* display: flex; */
+    width: 100%;
+    height: 10vh;
+    /* background-color: rgb(204, 197, 197); */
+}
+
+
+.menuNavegacion__lista{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuNavegacion__elemento{
+    margin: 0 3%;
+    border: solid 2px white;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.elemento__link{
+    text-decoration:none;
+    color: white;
+}
+
+/*----------------------- ESTILOS FORMULARIO DE USUARIOS --------------------------------*/
+
+.formulario{
+    width: 30%;
+    height: 80%;
+    border: solid 5px rgba(0, 255, 13, 0.661);;
+    margin: 4% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    gap: 1vh;
+    border-radius: 20px;
+    background-color: #44613f;
+    gap: 20px;
+}
+
+.padre_input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formulario__campo{
+    width: 80%;
+    /* text-align: center; */
+    height: 5vh;
+    border-radius: 10px;
+    padding: 0 15px;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: rgb(50, 50, 50);
+}
+
+.formulario__campo::placeholder{
+    color: rgb(113, 113, 113);
+}
+
+.formulario__radios{
+    display: flex;
+    width: 80%;
+    height: 5vh;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid 3px rgb(49, 246, 0);
+    border-radius: 15px;
+    background-color: rgba(49, 246, 0 );
+    
+}
+
+.formulario__boton{
+    width: 40%;
+    height: 5vh;
+    border-radius: 10px;
+    background-color: rgba(73, 183, 81, 0.637);
+    border: none;
+}
+
+.formulario__boton:hover{
+    /* cursor: pointer;
+     box-shadow: 0px 0px 40px 2px rgb(207, 206, 206);
+  transition: 1s; */
+}
+
+.formulario__checboxs{
+    display: flex;
+    flex-direction: column;
+    border: solid 3px rgb(49, 246, 0);
+    width: 80%;
+    border-radius: 15px;
+    padding: 0 15px;
+    background-color: rgb(49, 246, 0);
+}
+
+.border-red{
+    border: solid 3px red;
+}
+
+span{
+    color: rgb(253, 120, 120); 
+    font-size: 80%;
+    text-align: center;
+}
+
+.tabla{
+    margin: 20px auto;
+    width: 60%;
+    border-spacing: 0;
+    color: #0a891d;
+}
+
+.tabla__campo{
+    border: solid 1px rgb(49, 246, 0);
+    text-align: center;
+}
+h3{
+  color: rgba(0, 255, 13, 0.661);
+}
+h1{
+  margin-top: 30px;
+  color: rgba(0, 255, 13, 0.661);
+  justify-content: center;
+  text-align: center;
+}
+label{
+  
+  color: rgb(45, 62, 47);
+  
+}
+.titulo_lenguajes{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.titulo_generos{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*-------------------------------------- FORMULARIO GENEROS ---------------------------------------*/
+
+.tabla--pequeña{
+    width: 30%;
+}
