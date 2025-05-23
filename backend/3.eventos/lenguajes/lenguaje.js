@@ -1,3 +1,4 @@
+import { get } from "../api.js";
 import { agregaraDB, limpiar, validar, validarMinimo } from "../modulo/modulo.js";
 
 import { crearTablaLenguajes } from "./cargaDatos.js";

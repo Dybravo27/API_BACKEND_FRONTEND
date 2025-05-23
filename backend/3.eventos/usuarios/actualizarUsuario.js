@@ -1,3 +1,4 @@
+import { get, put } from "../api.js";
 import { limpiar, validar } from "../modulo/modulo.js";
 import { cargarCiudades, cargarGeneros, cargarLenguajes } from "./cargaDatos.js";
 

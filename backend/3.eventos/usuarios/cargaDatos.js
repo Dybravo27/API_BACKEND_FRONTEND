@@ -1,3 +1,4 @@
+import { get } from "../api.js";
 export const cargarCiudades=async ()=>{
 
     const ciudades=await get("ciudades");
@@ -165,4 +166,7 @@ export const crearTablaUsuarios=async (info)=>{
     });
     tabla.append(cuerpo);
     body.append(tabla)
+}
+export const crearTablaLenguajeUsuario=async(encabezado,info)=>{
+
 }

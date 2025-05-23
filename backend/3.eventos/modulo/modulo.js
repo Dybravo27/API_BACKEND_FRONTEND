@@ -1,4 +1,4 @@
-
+import { get, post } from "../api.js";
 export const validarLetras=(event)=>{
     let tecla=event.key;
     const letras=/[a-zñáéíóú\s]/i;

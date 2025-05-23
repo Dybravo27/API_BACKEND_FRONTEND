@@ -1,3 +1,4 @@
+import { get, put } from "../api.js";
 import { limpiar, validar, validarMinimo } from "../modulo/modulo.js";
 
 

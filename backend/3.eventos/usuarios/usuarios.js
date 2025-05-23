@@ -1,6 +1,6 @@
 import { validarMaximo, limpiar, limpiarChecboxs, limpiarRadios, validar, validarLetras, validarNumeros, validarMinimo, validarContraseniaMensaje, agregaraDB } from "../modulo/modulo.js";
-
 import { cargarCiudades, cargarGeneros, cargarLenguajes, crearTablaUsuarios , crearTablaLenguajeUsuario} from "./cargaDatos.js";
+import { get } from "../api.js";
 
 
 
