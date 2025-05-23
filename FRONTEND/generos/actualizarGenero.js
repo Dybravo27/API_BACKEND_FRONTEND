@@ -6,20 +6,20 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 const formulario=document.querySelector("form");
-const nombre_lenguaje=document.querySelector('[name="lenguaje"]');
+const nombre_genero=document.querySelector('[name="genero"]');
 
-const len=await get("lenguajes/"+id)
-const lenguaje=len.data;
+const gen=await get("generos/"+id)
+const genero=gen.data;
 
-nombre_lenguaje.value=lenguaje.lenguaje;
+nombre_genero.value=genero.genero;
 
 formulario.addEventListener('submit',async(event)=>{
     const info=await validar(event);
     if(info!=false){
-        const respuesta=await put(`lenguajes/${id}`,info)
+        const respuesta=await put(`generos/${id}`,info)
         console.log(respuesta);
     }
 })
 
-nombre_lenguaje.addEventListener("blur",limpiar);
-nombre_lenguaje.addEventListener("blur",validarMinimo)
+nombre_genero.addEventListener("blur",limpiar);
+nombre_genero.addEventListener("blur",validarMinimo)
