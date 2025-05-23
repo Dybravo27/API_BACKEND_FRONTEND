@@ -5,7 +5,7 @@ export const crearTablaCiudades=(info_encabezado,info)=>{
         const tabla=document.createElement("table");
         tabla.classList.add('tabla',"tabla--pequeña");
 
-        /*----------------------CREACION DEL ENCABEZADO----------------- */
+        /*----------------------ENCABEZADO----------------- */
         const encabezado=document.createElement("thead");
         encabezado.classList.add("tabla__encabezado");
         const filaEncabezado=document.createElement("tr")
@@ -17,7 +17,7 @@ export const crearTablaCiudades=(info_encabezado,info)=>{
         });
         tabla.append(filaEncabezado);
 
-        /*--------------------CREACION DEL CUERPO DE LA TABLA-----------------*/
+        /*--------------------CUERPO DE LA TABLA-----------------*/
         const cuerpo=document.createElement("tbody");
         cuerpo.classList.add("tabla__cuerpo");
 

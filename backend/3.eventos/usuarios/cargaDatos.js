@@ -77,7 +77,7 @@ export const cargarLenguajes=async()=>{
 
 export const crearTablaUsuarios=async (info)=>{
 
-    // const usuarios=await get("usuarios");
+    const usuarios=await get("usuarios");
     const generos=await get("generos");
     const ciudades=await get("ciudades");
 
